@@ -6,16 +6,21 @@ public class Character : MonoBehaviour
 {
     // Start is called before the first frame update
     float speed;
+    Animator myAnimator;
     Vector2 mySpeed;
     public bool canJump = true;
     void Start()
     {
+        myAnimator = gameObject.GetComponent<Animator>();
+        myAnimator.SetBool("jumping", false);
+
         speed = 0.1F;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         Transform Transform = GetComponent<Transform>();
         if (Input.GetKey("d"))
         {
@@ -31,9 +36,13 @@ public class Character : MonoBehaviour
         {
             if (canJump)
             {
+                myAnimator.SetBool("jumping", true);
+
                 canJump = false;
                 gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 10f);
                 Debug.Log("jump jump");
+               
+
             }
 
         }
@@ -41,6 +50,7 @@ public class Character : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         canJump = true;
+        myAnimator.SetBool("jumping", false);
 
     }
 }
