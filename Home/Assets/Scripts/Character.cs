@@ -8,7 +8,19 @@ public class Character : MonoBehaviour
     float speed;
     Animator myAnimator;
     Vector2 mySpeed;
+    [SerializeField] inventory inventory; 
     public bool canJump = true;
+    void Awake()
+    {
+       if(FindObjectsOfType<Character>().Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            GameObject.DontDestroyOnLoad(gameObject);
+        }
+    }
     void Start()
     {
         myAnimator = gameObject.GetComponent<Animator>();
