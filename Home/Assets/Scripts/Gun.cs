@@ -8,7 +8,7 @@ public class Gun : MonoBehaviour
     float barrelEndX= 0.25f;
     float barrelEndY= 0.065f;
     float bulletFlyingSpeed = 2f;
-    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject bullet =null;
     AudioClip myAudio;
 
     public void shoot()
@@ -32,7 +32,7 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             shoot();
         }
