@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
@@ -21,19 +22,32 @@ public class Character : MonoBehaviour
             GameObject.DontDestroyOnLoad(gameObject);
         }
     }
+    public inventory getInventoy()
+    {
+        return inventory;
+    }
     void Start()
     {
+
         myAnimator = gameObject.GetComponent<Animator>();
         myAnimator.SetBool("jumping", false);
 
         speed = 0.1F;
     }
+    void nextScene()
+    {
+        SceneManager.LoadScene("shop");
+    }
 
     // Update is called once per frame
     void Update()
     {
-
-        Transform Transform = GetComponent<Transform>();
+        if (Input.GetKey("b"))
+        {
+            
+            nextScene();
+        }
+            Transform Transform = GetComponent<Transform>();
         if (Input.GetKey("d"))
         {
             Transform.position = Transform.position + new Vector3(1*speed, 0, 0);

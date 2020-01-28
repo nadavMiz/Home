@@ -10,6 +10,7 @@ public class Store : MonoBehaviour
     private void Start()
     {
         Character charecter = Object.FindObjectOfType<Character>();
+        m_charectedInventory = charecter.getInventoy();
     }
 
     public void BuyItem()
